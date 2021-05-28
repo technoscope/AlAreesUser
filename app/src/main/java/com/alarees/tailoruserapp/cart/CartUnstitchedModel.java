@@ -15,6 +15,15 @@ public class CartUnstitchedModel {
     String orderdate;
     String totalpayment;
     String measurementId;
+    String size;
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
 
     public String getMeasurementId() { return measurementId;}
 

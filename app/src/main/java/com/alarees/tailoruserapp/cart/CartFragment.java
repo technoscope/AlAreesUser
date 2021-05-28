@@ -1,9 +1,6 @@
 package com.alarees.tailoruserapp.cart;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 
@@ -29,7 +26,6 @@ import android.widget.Toast;
 import com.alarees.tailoruserapp.R;
 import com.alarees.tailoruserapp.account.SigninFragment;
 import com.alarees.tailoruserapp.database.DatabaseHelper;
-import com.alarees.tailoruserapp.paymentgetway.PaymentGetways;
 import com.alarees.tailoruserapp.unstitched.collar.CollarFragment;
 import com.alarees.tailoruserapp.unstitched.cuff.CuffFragment;
 import com.alarees.tailoruserapp.unstitched.placket.PlacketFragment;
@@ -113,7 +109,7 @@ public class CartFragment extends Fragment {
                     cartmodel.setPrice(CollarFragment.itemprice);
                     cartmodel.setClothName(CollarFragment.itemname);
                     cartmodel.setClothimg(CollarFragment.itemimgg);
-                    databaseHelper.insertUnstitchedData(cartmodel);
+                    databaseHelper.insertData(cartmodel);
                 }
             } catch (Exception e) {
             }
@@ -126,7 +122,8 @@ public class CartFragment extends Fragment {
                     readymodel.setPrice(getArguments().getString("itemprice"));
                     readymodel.setQuantity("1");
                     readymodel.setUserId(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                    databaseHelper.insertUnstitchedData(readymodel);
+                    readymodel.setSize(getArguments().getString("size"));
+                    databaseHelper.insertData(readymodel);
                 }
             } catch (Exception e) {
             }

@@ -3,6 +3,7 @@ package com.alarees.tailoruserapp.home;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.alarees.tailoruserapp.R;
@@ -33,6 +35,10 @@ import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
     @SuppressLint("NonConstantResourceId")
+    @BindView(R.id.home_logo)
+    ImageView logoimage;
+    @BindView(R.id.home_container)
+    LinearLayout container;
     @BindView(R.id.layout_deals)
     LinearLayout deals_lyout;
     @SuppressLint("NonConstantResourceId")
@@ -47,7 +53,6 @@ public class HomeFragment extends Fragment {
     @SuppressLint("NonConstantResourceId")
     @BindView(R.id.layout_aboutus)
     LinearLayout aboutus_lyout;
-
 
     Unbinder unbinder;
     //  @BindView(R.id.recycle_home)
@@ -74,21 +79,25 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         unbinder = ButterKnife.bind(this, view);
         manager = getFragmentManager();
-//        fragmentArrayList = new ArrayList<>();
-//        fragmentArrayList.add(new ContactFragment());
-//        fragmentArrayList.add(new DealsFragment());
-//        fragmentArrayList.add(new MyDetialFragment());
-//        fragmentArrayList.add(new UnstitchedItemsFragment());
-//        fragmentArrayList.add(new ReadyMadeItemsFragment());
-//
-//        nameoffragments=new ArrayList<>();
-//        nameoffragments.add(getResources().getString(R.string.aboutus));
-//        nameoffragments.add(getResources().getString(R.string.dealss));
-//        nameoffragments.add(getResources().getString(R.string.mymeasurement));
-//        nameoffragments.add(getResources().getString(R.string.ustiched));
-//        nameoffragments.add(getResources().getString(R.string.readymade));
-//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true));
-//        recyclerView.setAdapter(new HomeAdapter(getContext(), manager, fragmentArrayList,nameoffragments));
+        int nightModeFlags =
+                this.getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                container.setBackgroundResource(R.drawable.background);
+                logoimage.setBackgroundResource(R.drawable.ic_logo1);
+                break;
+            case Configuration.UI_MODE_NIGHT_NO:
+                container.setBackgroundResource(R.drawable.background_white);
+                logoimage.setBackgroundResource(R.drawable.logonew);
+                break;
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                container.setBackgroundResource(R.drawable.background);
+                logoimage.setBackgroundResource(R.drawable.ic_logo1);
+                break;
+        }
+
+
         deals_lyout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

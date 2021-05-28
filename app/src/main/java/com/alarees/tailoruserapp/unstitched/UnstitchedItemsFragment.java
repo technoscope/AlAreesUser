@@ -1,5 +1,6 @@
 package com.alarees.tailoruserapp.unstitched;
 
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -20,6 +21,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.alarees.tailoruserapp.R;
 import com.alarees.tailoruserapp.home.HomeFragment;
@@ -38,12 +40,16 @@ public class UnstitchedItemsFragment extends Fragment implements TitledFragment 
     @BindView(R.id.id_unstiched_list)
     RecyclerView recyclerView;
     ArrayList<UnstitchedModel> models;
+    @BindView(R.id.unstitched_container)
+    LinearLayout container;
     DatabaseReference mRef;
     FragmentManager manager;
     private Unbinder unbinder;
     UnstitchedModel model;
     String catogory = "";
     ImageView backpres;
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,6 +69,20 @@ public class UnstitchedItemsFragment extends Fragment implements TitledFragment 
         models = new ArrayList<>();
         manager = getFragmentManager();
         unbinder = ButterKnife.bind(this, view);
+        int nightModeFlags =
+                this.getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                container.setBackgroundResource(R.drawable.background);
+                break;
+            case Configuration.UI_MODE_NIGHT_NO:
+                container.setBackgroundResource(R.drawable.background_white);
+                break;
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                //doStuff();
+                break;
+        }
         backpres=view.findViewById(R.id.back_unstitched);
         backpres.setOnClickListener(new View.OnClickListener() {
             @Override

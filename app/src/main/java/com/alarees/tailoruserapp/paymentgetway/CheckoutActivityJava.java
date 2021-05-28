@@ -1,9 +1,11 @@
 package com.alarees.tailoruserapp.paymentgetway;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,6 +43,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MediaType;
@@ -53,6 +57,7 @@ public class CheckoutActivityJava extends AppCompatActivity {
     private static final String BACKEND_URL = "http://ahmed.botsolutions.org/";
     private final OkHttpClient httpClient = new OkHttpClient();
     private String paymentIntentClientSecret;
+    LinearLayout container;
     private Stripe stripe;
     private TextView waiting;
     ProgressBar waitbar;
@@ -61,6 +66,7 @@ public class CheckoutActivityJava extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkout_java);
+        container=findViewById(R.id.checkout_container);
         // Configure the SDK with your Stripe publishable key so it can make requests to Stripe
         waitbar = findViewById(R.id.progwait);
         waiting = findViewById(R.id.waiting);
@@ -69,6 +75,21 @@ public class CheckoutActivityJava extends AppCompatActivity {
                 Objects.requireNonNull("pk_test_51Ib0dfEPtOtpUpfzXLN8NxSZRWKvQ32ahtMzoyOPSaQi00TNmChCIZ1FIP7jUjpdp0WaTqxVeUZqh9pOz4BfkxkG00GKppSzRI")
         );
         startCheckout();
+        //changing the modes
+        int nightModeFlags =
+                this.getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                container.setBackgroundResource(R.drawable.background);
+                break;
+            case Configuration.UI_MODE_NIGHT_NO:
+                container.setBackgroundResource(R.drawable.background_white);
+                break;
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                //doStuff();
+                break;
+        }
     }
 
     private void startCheckout() {

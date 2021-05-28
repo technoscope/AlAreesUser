@@ -23,6 +23,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String ICOL_10 = "quantity";
     public static final String ICOL_11 = "clothimg";
     public static final String ICOL_12 = "measurementId";
+    public static final String ICOL_13 = "size";
 
 
     Context context;
@@ -34,7 +35,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + TABLE_NAME + " (cid INTEGER PRIMARY KEY AUTOINCREMENT, userId TEXT ,orderId TEXT , clothName TEXT , price TEXT, cuffType Text, placketType Text, pocketType Text, collarType Text,quantity Text,clothimg Text,measurementId Text)");
+        db.execSQL("create table " + TABLE_NAME + " (cid INTEGER PRIMARY KEY AUTOINCREMENT, userId TEXT ,orderId TEXT , clothName TEXT , price TEXT, cuffType Text, placketType Text, pocketType Text, collarType Text,quantity Text,clothimg Text,measurementId Text,size Text)");
 
     }
 
@@ -44,37 +45,101 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertUnstitchedData(CartUnstitchedModel rModel) {
-        if (getID(rModel.getClothName(), String.valueOf(rModel.getClothimg())) == -1) {
-            SQLiteDatabase db = this.getWritableDatabase();
-            ContentValues contentValues = new ContentValues();
-            contentValues.put(ICOL_2, rModel.getUserId());
-            contentValues.put(ICOL_3, rModel.getOrderId());
-            contentValues.put(ICOL_4, rModel.getClothName());
-            contentValues.put(ICOL_5, rModel.getPrice());
-            contentValues.put(ICOL_6, rModel.getCuffType());
-            contentValues.put(ICOL_7, rModel.getPlacketType());
-            contentValues.put(ICOL_8, rModel.getPocketType());
-            contentValues.put(ICOL_9, rModel.getCollarType());
-            contentValues.put(ICOL_10, rModel.getQuantity());
-            contentValues.put(ICOL_11, rModel.getClothimg());
-            contentValues.put(ICOL_12,rModel.getMeasurementId());
-            long result = db.insert(TABLE_NAME, null, contentValues);
-
-            if (result == -1) {
-                return false;
+    public boolean insertData(CartUnstitchedModel rModel) {
+        if (rModel.getCollarType() == null) {
+            if (getID(rModel.getClothName(), String.valueOf(rModel.getClothimg())) == -1) {
+                //if (rModel.getPocketType() == null)
+                SQLiteDatabase db = this.getWritableDatabase();
+                ContentValues contentValues = new ContentValues();
+                contentValues.put(ICOL_2, rModel.getUserId());
+                contentValues.put(ICOL_3, rModel.getOrderId());
+                contentValues.put(ICOL_4, rModel.getClothName());
+                contentValues.put(ICOL_5, rModel.getPrice());
+                contentValues.put(ICOL_6, rModel.getCuffType());
+                contentValues.put(ICOL_7, rModel.getPlacketType());
+                contentValues.put(ICOL_8, rModel.getPocketType());
+                contentValues.put(ICOL_9, rModel.getCollarType());
+                contentValues.put(ICOL_10, rModel.getQuantity());
+                contentValues.put(ICOL_11, rModel.getClothimg());
+                contentValues.put(ICOL_12, rModel.getMeasurementId());
+                contentValues.put(ICOL_13, rModel.getSize());
+                long result = db.insert(TABLE_NAME, null, contentValues);
+                if (result == -1) {
+                    return false;
+                } else {
+                    return true;
+                }
             } else {
-                return true;
+                return updateData(rModel.getCartId(), String.valueOf(rModel.getQuantity()), String.valueOf(rModel.getPrice()));
+            }
+        } else if (rModel.getMeasurementId().equals("parent")) {
+            if (getID(rModel.getClothName(), String.valueOf(rModel.getClothimg())) == -1) {
+                SQLiteDatabase db = this.getWritableDatabase();
+                ContentValues contentValues = new ContentValues();
+                contentValues.put(ICOL_2, rModel.getUserId());
+                contentValues.put(ICOL_3, rModel.getOrderId());
+                contentValues.put(ICOL_4, rModel.getClothName());
+                contentValues.put(ICOL_5, rModel.getPrice());
+                contentValues.put(ICOL_6, rModel.getCuffType());
+                contentValues.put(ICOL_7, rModel.getPlacketType());
+                contentValues.put(ICOL_8, rModel.getPocketType());
+                contentValues.put(ICOL_9, rModel.getCollarType());
+                contentValues.put(ICOL_10, rModel.getQuantity());
+                contentValues.put(ICOL_11, rModel.getClothimg());
+                contentValues.put(ICOL_12, rModel.getMeasurementId());
+                contentValues.put(ICOL_13, rModel.getSize());
+                long result = db.insert(TABLE_NAME, null, contentValues);
+                if (result == -1) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+            else {
+                return updateData(rModel.getCartId(), String.valueOf(rModel.getQuantity()), String.valueOf(rModel.getPrice()));
             }
         } else {
-
-            return updateUnstitchedData(rModel.getCartId(), String.valueOf(rModel.getQuantity()), String.valueOf(rModel.getPrice()));
+            if (getIDforUns(rModel.getClothName(), String.valueOf(rModel.getMeasurementId())) == -1) {
+                //if (rModel.getPocketType() == null)
+                SQLiteDatabase db = this.getWritableDatabase();
+                ContentValues contentValues = new ContentValues();
+                contentValues.put(ICOL_2, rModel.getUserId());
+                contentValues.put(ICOL_3, rModel.getOrderId());
+                contentValues.put(ICOL_4, rModel.getClothName());
+                contentValues.put(ICOL_5, rModel.getPrice());
+                contentValues.put(ICOL_6, rModel.getCuffType());
+                contentValues.put(ICOL_7, rModel.getPlacketType());
+                contentValues.put(ICOL_8, rModel.getPocketType());
+                contentValues.put(ICOL_9, rModel.getCollarType());
+                contentValues.put(ICOL_10, rModel.getQuantity());
+                contentValues.put(ICOL_11, rModel.getClothimg());
+                contentValues.put(ICOL_12, rModel.getMeasurementId());
+                contentValues.put(ICOL_13, rModel.getSize());
+                long result = db.insert(TABLE_NAME, null, contentValues);
+                if (result == -1) {
+                    return false;
+                } else {
+                    return true;
+                }
+            } else {
+                return updateData(rModel.getCartId(), String.valueOf(rModel.getQuantity()), String.valueOf(rModel.getPrice()));
+            }
         }
+
+        //end of main function
     }
 
     public int getID(String clothName, String clothimg) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor c = db.query(TABLE_NAME, new String[]{"clothName"}, "clothName =? AND clothimg =? ", new String[]{clothName, clothimg}, null, null, null, null);
+        if (c.moveToFirst()) //if the row exist then return the id
+            return c.getInt(c.getColumnIndex("clothName"));
+        return -1;
+    }
+
+    public int getIDforUns(String clothName, String measurementId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor c = db.query(TABLE_NAME, new String[]{"clothName"}, "clothName =? AND measurementId =? ", new String[]{clothName, measurementId}, null, null, null, null);
         if (c.moveToFirst()) //if the row exist then return the id
             return c.getInt(c.getColumnIndex("clothName"));
         return -1;
@@ -102,7 +167,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return null;
     }
 
-    public boolean updateUnstitchedData(String cid, String qty, String price) {
+    public boolean updateData(String cid, String qty, String price) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(ICOL_1, cid);

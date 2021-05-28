@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:orientation="vertical"
+    android:id="@+id/deals_container"
     tools:context="com.alarees.tailoruserapp.deals.DealsFragment">
 
     <LinearLayout
@@ -28,7 +29,7 @@
             android:textSize="18dp"
             android:layout_gravity="center"
             android:fontFamily="@font/fidena"
-            android:text="@string/dealss"></TextView>
+            android:text="@string/dealss"/>
     </LinearLayout>
 
  <androidx.recyclerview.widget.RecyclerView

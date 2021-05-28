@@ -7,6 +7,7 @@
     android:background="@drawable/background"
     android:gravity="center"
     android:orientation="vertical"
+    android:id="@+id/home_container"
     tools:context=".home.HomeFragment">
 
     <LinearLayout
@@ -15,6 +16,7 @@
         android:orientation="vertical">
 
         <ImageView
+            android:id="@+id/home_logo"
             android:layout_width="150dp"
             android:layout_height="100dp"
             android:layout_gravity="center"

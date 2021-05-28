@@ -178,15 +178,15 @@ public class ReadyMadeAdapter extends RecyclerView.Adapter<ReadyMadeAdapter.View
             public void onClick(View v) {
 
                 dialog.dismiss();
-                forData(model.getSmallQty(), position);
-                //  Toast.makeText(context, "Small selected", Toast.LENGTH_SHORT).show();
+                forData(small.getText().toString(), position);
+                  Toast.makeText(context, "Small selected", Toast.LENGTH_SHORT).show();
             }
         });
         TextView medium = (TextView) dialog.findViewById(R.id.rdymd_medium);
         medium.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                forData(model.getMediumQty(), position);
+                forData(medium.getText().toString(), position);
                 dialog.dismiss();
                 Toast.makeText(context, "Medium selected", Toast.LENGTH_SHORT).show();
 
@@ -197,7 +197,7 @@ public class ReadyMadeAdapter extends RecyclerView.Adapter<ReadyMadeAdapter.View
         large.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                forData(model.getLargeQty(), position);
+                forData(large.getText().toString(), position);
                 dialog.dismiss();
                 Toast.makeText(context, "Large selected", Toast.LENGTH_SHORT).show();
             }
@@ -208,9 +208,7 @@ public class ReadyMadeAdapter extends RecyclerView.Adapter<ReadyMadeAdapter.View
     public void forData(String name, int position) {
         FragmentTransaction ft = manager.beginTransaction();
         Bundle bundle = new Bundle();
-        bundle.putString("Large", name);
-        bundle.putString("Medium", name);
-        bundle.putString("small", name);
+        bundle.putString("size", name);
         bundle.putString("itemname", models.get(position).getItemName());
         bundle.putString("itemprice", models.get(position).getItemPrice());
         bundle.putString("itemdes", models.get(position).getItemDes());

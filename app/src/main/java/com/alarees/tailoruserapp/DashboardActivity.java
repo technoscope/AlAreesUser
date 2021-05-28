@@ -28,6 +28,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alarees.tailoruserapp.account.SignUpFragment;
 import com.alarees.tailoruserapp.account.SigninFragment;
@@ -59,6 +60,7 @@ public class DashboardActivity extends AppCompatActivity implements IPickResult 
     public static TextView badgetext;
     @SuppressLint("StaticFieldLeak")
     public static ImageView cartimg;
+    BottomNavigationView navigation;
     DatabaseReference myRef;
     OrderStatus orderStatus;
     static String CHANNEL_ID = "1";
@@ -90,7 +92,7 @@ public class DashboardActivity extends AppCompatActivity implements IPickResult 
         setContentView(R.layout.activity_dashboard);
         getSupportActionBar().hide();
         createNotificationChannel();
-        BottomNavigationView navigation = findViewById(R.id.navigation);
+        navigation = findViewById(R.id.navigation);
         Fresco.initialize(this);
         mypref = getSharedPreferences("language", Context.MODE_PRIVATE);
         list = new ArrayList<>();
@@ -201,6 +203,20 @@ public class DashboardActivity extends AppCompatActivity implements IPickResult 
                     }
                 });
 
+                int nightModeFlags =
+                    this.getResources().getConfiguration().uiMode &
+                                Configuration.UI_MODE_NIGHT_MASK;
+                switch (nightModeFlags) {
+                    case Configuration.UI_MODE_NIGHT_YES:
+                        navigation.setBackgroundResource(R.drawable.bck);
+                        break;
+                    case Configuration.UI_MODE_NIGHT_NO:
+                        navigation.setBackgroundResource(R.drawable.bck_white);
+                        break;
+                    case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                        //doStuff();
+                        break;
+                }
             }
         } catch (Exception e) {
         }

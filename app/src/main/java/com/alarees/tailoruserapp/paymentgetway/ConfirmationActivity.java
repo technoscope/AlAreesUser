@@ -124,6 +124,7 @@ public class ConfirmationActivity extends AppCompatActivity {
                     rModel.setQuantity(res.getString(9));
                     rModel.setClothimg(res.getString(10));
                     rModel.setMeasurementId(res.getString(11));
+                    rModel.setSize(res.getString(12));
                     rModel.setOrderdate(getTodayDate());
                     rModel.setTotalpayment(totalpayment);
                     ordermodels.add(rModel);

@@ -19,7 +19,6 @@ import com.alarees.tailoruserapp.database.DatabaseHelper;
 import com.alarees.tailoruserapp.home.HomeFragment;
 import com.alarees.tailoruserapp.measurement.HowToFragment;
 import com.alarees.tailoruserapp.paymentgetway.CheckoutActivityJava;
-import com.bumptech.glide.Glide;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -127,7 +126,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
                 model.setClothName(models.get(position).getClothName());
                 models.set(position, model);
                 unstichedtotal(models, holder);
-                helper.insertUnstitchedData(model);
+                helper.insertData(model);
             }
         });
         prceedbtn.setOnClickListener(new View.OnClickListener() {
@@ -162,7 +161,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
                     model.setClothName(models.get(position).getClothName());
                     models.set(position, model);
                     unstichedtotal(models, holder);
-                    helper.insertUnstitchedData(model);
+                    helper.insertData(model);
                 } else if (Double.parseDouble(holder.qty.getText().toString()) == 1) {
                     try {
                         helper.deleteRData(models.get(position).getCartId(), models.get(position).getClothimg());

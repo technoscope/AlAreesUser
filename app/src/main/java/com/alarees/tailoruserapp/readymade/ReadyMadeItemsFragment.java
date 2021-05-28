@@ -1,5 +1,6 @@
 package com.alarees.tailoruserapp.readymade;
 
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -17,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.alarees.tailoruserapp.R;
 import com.alarees.tailoruserapp.TitledFragment;
@@ -39,6 +41,8 @@ public class ReadyMadeItemsFragment extends Fragment implements TitledFragment {
     FragmentManager manager;
     ReadyMadeAdapter adapter;
     ImageView readymade;
+    LinearLayout container;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +70,21 @@ public class ReadyMadeItemsFragment extends Fragment implements TitledFragment {
                 ft.commit();
             }
         });
+        container=view.findViewById(R.id.readymade_container);
+        int nightModeFlags =
+                this.getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                container.setBackgroundResource(R.drawable.background);
+                break;
+            case Configuration.UI_MODE_NIGHT_NO:
+                container.setBackgroundResource(R.drawable.background_white);
+                break;
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                //doStuff();
+                break;
+        }
         mRef = FirebaseDatabase.getInstance().getReference("AdminDatabase");
         mRef.child("ReadymadeItems").addValueEventListener(new ValueEventListener() {
             @Override
