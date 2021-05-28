@@ -72,6 +72,7 @@ public class DashboardActivity extends AppCompatActivity implements IPickResult 
     ArrayAdapter<String> spinneradapter;
     ArrayList<String> list;
     SharedPreferences mypref;
+    //ne chnages
     Editor shareeditor;
 
     public DashboardActivity() {
