@@ -65,7 +65,7 @@ public class DashboardActivity extends AppCompatActivity implements IPickResult 
     int i = 1;
     Context context;
     Resources resources;
-        //new change
+        //new change2
     SharedPreferences sharedpreferences;
     Editor editor;
     Spinner spinner;
