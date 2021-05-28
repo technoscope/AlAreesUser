@@ -65,7 +65,7 @@ public class DashboardActivity extends AppCompatActivity implements IPickResult 
     int i = 1;
     Context context;
     Resources resources;
-    //newnewnewnew
+        //new change
     SharedPreferences sharedpreferences;
     Editor editor;
     Spinner spinner;
@@ -93,16 +93,16 @@ public class DashboardActivity extends AppCompatActivity implements IPickResult 
         Fresco.initialize(this);
         mypref = getSharedPreferences("language", Context.MODE_PRIVATE);
         list = new ArrayList<>();
-        if (mypref.getInt("en", 0) == 0 && mypref.getInt("ar", 0) == 0) {
+        if(mypref.getInt("en",0)==0&&mypref.getInt("ar",0)==0) {
             list = new ArrayList<>();
             list.add("en");
             list.add("ar");
-        } else if (mypref.getInt("en", 0) == 1 && mypref.getInt("ar", 0) == 0) {
+        }else if(mypref.getInt("en",0)==1&&mypref.getInt("ar",0)==0){
             list = new ArrayList<>();
             list.add("en");
             list.add("ar");
             setApplicationLocale("en");
-        } else if (mypref.getInt("ar", 0) == 1 && mypref.getInt("en", 0) == 0) {
+        }else if(mypref.getInt("ar",0)==1&&mypref.getInt("en",0)==0){
             list = new ArrayList<>();
             list.add("ar");
             list.add("en");
@@ -126,10 +126,10 @@ public class DashboardActivity extends AppCompatActivity implements IPickResult 
                 ft.addToBackStack("SideFragment");
                 ft.commit();
             } else if (flag.equals("2")) {
-                Bundle bundle = new Bundle();
-                bundle.putInt("phoneauth", 10);
+                Bundle bundle=new Bundle();
+                bundle.putInt("phoneauth",10);
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                SignUpFragment signUpFragment = new SignUpFragment();
+                SignUpFragment signUpFragment=new SignUpFragment();
                 signUpFragment.setArguments(bundle);
                 ft.replace(R.id.nav_host_fragment, signUpFragment);
                 ft.addToBackStack(null);
