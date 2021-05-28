@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    tools:context="com.alarees.tailoruserapp.DashboardActivity">
+    <FrameLayout
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/hallow_round_white_bg"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:elevation="2dp">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/navigation"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/bck"
+            app:itemIconSize="40dp"
+            app:itemIconTint="@color/green_900"
+            app:itemTextColor="@color/green_900"
+            app:labelVisibilityMode="unlabeled"
+            app:menu="@menu/menu" />
+
+    </LinearLayout>
+</LinearLayout><!--    app:labelVisibilityMode=""-->

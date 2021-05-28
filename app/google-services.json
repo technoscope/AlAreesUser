@@ -1,0 +1,91 @@
+{
+  "project_info": {
+    "project_number": "490807962505",
+    "firebase_url": "https://tailor-admin-side-default-rtdb.firebaseio.com",
+    "project_id": "tailor-admin-side",
+    "storage_bucket": "tailor-admin-side.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:490807962505:android:0c78ea82cde37c58ff4f58",
+        "android_client_info": {
+          "package_name": "com.alarees.tailoruserapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "490807962505-6oa02mg80fncv50i3t5jfc8mhc45sjkb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alarees.tailoruserapp",
+            "certificate_hash": "ab3953b904910b7947d956b117bcb53edc4ca9b5"
+          }
+        },
+        {
+          "client_id": "490807962505-0t5hsb7cuf1mk5r2v0bfjuu9m86dvvbb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbMsV3s6l5jbEHXOcCmZKT_UmSD2l6HAg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "490807962505-0t5hsb7cuf1mk5r2v0bfjuu9m86dvvbb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "490807962505-8lg5b354as4jiici787bk51qbrjkmj4r.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.Murtaza.Tailor-App"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:490807962505:android:8dec8d526e2627b8ff4f58",
+        "android_client_info": {
+          "package_name": "com.example.tailoradminside"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "490807962505-0t5hsb7cuf1mk5r2v0bfjuu9m86dvvbb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbMsV3s6l5jbEHXOcCmZKT_UmSD2l6HAg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "490807962505-0t5hsb7cuf1mk5r2v0bfjuu9m86dvvbb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "490807962505-8lg5b354as4jiici787bk51qbrjkmj4r.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.Murtaza.Tailor-App"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

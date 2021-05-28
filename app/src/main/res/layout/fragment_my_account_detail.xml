@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/whitegrey"
+    tools:context="com.alarees.tailoruserapp.account.MyAccountDetailFragment">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="true"
+            android:background="@drawable/background"
+            android:fillViewport="true"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2.8"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="200dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_height="150dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/ic_logo1"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="15dp"
+                        android:gravity="center"
+                        android:text="@string/update_your_account"
+                        android:textColor="@color/green_900"
+                        android:textSize="18dp"
+                        android:fontFamily="@font/fidena"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_margin="14dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingEnd="10dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/name"
+                                android:textSize="12dp"
+                                android:fontFamily="@font/fidena"
+                                android:textColor="@color/white"/>
+
+                            <EditText
+                                android:id="@+id/ed_fname"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_marginEnd="4dp"
+                                android:alpha="0.5"
+                                android:background="@drawable/hallow_round_black_bg"
+                                android:backgroundTint="@color/textviewcolor"
+                                android:inputType="textPersonName"
+                                android:padding="4dp"
+                                android:textColor="@color/white"
+                                android:textColorHint="@color/black" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingStart="10dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/last_name"
+                                android:textSize="12sp"
+                                android:fontFamily="@font/fidena"
+                                android:textColor="@color/white"/>
+
+                            <EditText
+                                android:id="@+id/ed_lname"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:background="@drawable/hallow_round_black_bg"
+                                android:padding="4dp"
+                                android:alpha="0.5"
+                                android:textColor="@color/white"
+                                android:backgroundTint="@color/textviewcolor"
+                                android:textColorHint="@color/black" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingEnd="10dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/height"
+                                android:textSize="12sp"
+                                android:fontFamily="@font/fidena"
+                                android:textColor="@color/white"/>
+
+                            <EditText
+                                android:id="@+id/ed_height"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_marginEnd="4dp"
+                                android:background="@drawable/hallow_round_black_bg"
+                                android:hint="in cm"
+                                android:alpha="0.5"
+                                android:inputType="numberDecimal"
+                                android:backgroundTint="@color/textviewcolor"
+                                android:padding="4dp"
+                                android:textColorHint="@color/textcolor"
+                                android:textColor="@color/white"
+                                />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingStart="10dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/weight"
+                                android:textSize="12sp"
+                                android:fontFamily="@font/fidena"
+                                android:textColor="@color/white"/>
+
+                            <EditText
+                                android:id="@+id/ed_weight"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:background="@drawable/hallow_round_black_bg"
+                                android:inputType="numberDecimal"
+                                android:padding="4dp"
+                                android:text="in KG"
+                                android:alpha="0.5"
+                                android:backgroundTint="@color/textviewcolor"
+                                android:textColor="@color/textcolor"
+                                android:textColorHint="@color/grey"
+                                />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/email_address"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/fidena"
+                        android:textColor="@color/white"/>
+
+                    <EditText
+                        android:id="@+id/ed_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:alpha="0.5"
+                        android:background="@drawable/hallow_round_black_bg"
+                        android:backgroundTint="@color/textviewcolor"
+                        android:inputType="textWebEmailAddress"
+                        android:padding="4dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/password"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/fidena"
+                        android:textColor="@color/white"/>
+
+                    <TextView
+                        android:id="@+id/ed_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/hallow_round_black_bg"
+                        android:padding="4dp"
+                        android:backgroundTint="@color/textviewcolor"
+                        android:textColor="@color/white"
+                        android:alpha="0.5"
+                        android:textColorHint="@color/black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/phone_no"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/fidena"
+                        android:textColor="@color/white"
+                        />
+
+                    <EditText
+                        android:id="@+id/ed_mobile"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:alpha="0.5"
+                        android:background="@drawable/hallow_round_black_bg"
+                        android:backgroundTint="@color/textviewcolor"
+                        android:inputType="number"
+                        android:padding="4dp"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/address"
+                        android:textSize="12sp"
+                        android:textColor="@color/white"/>
+
+                    <EditText
+                        android:id="@+id/ed_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:alpha="0.5"
+                        android:background="@drawable/hallow_round_black_bg"
+                        android:backgroundTint="@color/textviewcolor"
+                        android:inputType="text|textPostalAddress"
+                        android:padding="4dp"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2.5"
+                    android:orientation="vertical"
+                    android:padding="3dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="38dp"
+                        android:gravity="center"
+                        android:fontFamily="@font/fidena"
+                        android:textSize="12sp"
+                        android:text="@string/do_you_really_want_to_update_your_account"
+                        android:textColor="@color/white" />
+                    <Button
+                        android:id="@+id/btn_singup"
+                        style="@style/fidenafont"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:text="@string/Update"
+                        android:fontFamily="@font/fidena"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+</LinearLayout>

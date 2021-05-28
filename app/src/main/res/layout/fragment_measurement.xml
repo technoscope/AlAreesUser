@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/measure_frame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.alarees.tailoruserapp.measurement.MeasurementFragment">
+    <TextView
+        android:id="@+id/textview"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:padding="20dp"/>
+    <Button
+        android:id="@+id/inituser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Init User" />
+    <Button
+        android:id="@+id/selectfrontimg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select Front Image" />
+
+    <Button
+        android:id="@+id/selectsideimg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select Side Image" />
+
+    <Button
+        android:id="@+id/mymeasurement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Process Measurement" />
+
+    <Button
+        android:id="@+id/getmymeasrement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Get My Measurement" />
+
+
+</LinearLayout>
