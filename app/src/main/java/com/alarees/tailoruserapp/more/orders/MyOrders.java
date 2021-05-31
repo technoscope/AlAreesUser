@@ -100,6 +100,9 @@ public class MyOrders extends Fragment implements TitledFragment {
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 if (snapshot.hasChild("orderId")) {
                                     ordermodels.add(snapshot.getValue(OrderModel.class));
+                                    recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                                    recyclerView.setAdapter(new OrdersAdapter(ordermodels));
+
                                 }
                             }
 
@@ -114,6 +117,9 @@ public class MyOrders extends Fragment implements TitledFragment {
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 if (snapshot.hasChild("orderId")) {
                                     ordermodels.add(snapshot.getValue(OrderModel.class));
+                                    recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                                    recyclerView.setAdapter(new OrdersAdapter(ordermodels));
+
                                 }
                             }
 
