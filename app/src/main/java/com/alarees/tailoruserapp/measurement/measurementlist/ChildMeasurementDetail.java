@@ -2,6 +2,7 @@ package com.alarees.tailoruserapp.measurement.measurementlist;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -115,6 +116,8 @@ public class ChildMeasurementDetail extends Fragment implements TitledFragment {
     ProgressBar progressBar;
     @BindView(R.id.scrollcontainer)
     ScrollView scrollView;
+    @BindView(R.id.container)
+    LinearLayout container;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -132,6 +135,20 @@ public class ChildMeasurementDetail extends Fragment implements TitledFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
+        int nightModeFlags =
+                this.getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                container.setBackgroundResource(R.drawable.background);
+                break;
+            case Configuration.UI_MODE_NIGHT_NO:
+                container.setBackgroundResource(R.drawable.background_white);
+                break;
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                container.setBackgroundResource(R.drawable.background_white);
+                break;
+        }
         mRef = FirebaseDatabase.getInstance().getReference("AdminDatabase");
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();

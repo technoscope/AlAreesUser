@@ -1,5 +1,6 @@
 package com.alarees.tailoruserapp.account;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.alarees.tailoruserapp.R;
@@ -50,6 +53,10 @@ public class SignUpFragment extends Fragment implements TitledFragment {
     EditText address;
     @BindView(R.id.btn_singup)
     Button singup;
+    @BindView(R.id.container)
+    LinearLayout container;
+    @BindView(R.id.logo)
+    ImageView logo;
     Unbinder unbinder;
     private static final String TAG = "EmailPassword";
     // [START declare_auth]
@@ -80,6 +87,23 @@ public class SignUpFragment extends Fragment implements TitledFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         unbinder = ButterKnife.bind(this, view);
+        int nightModeFlags =
+                this.getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                container.setBackgroundResource(R.drawable.background);
+                logo.setBackgroundResource(R.drawable.ic_logo1);
+                break;
+            case Configuration.UI_MODE_NIGHT_NO:
+                container.setBackgroundResource(R.drawable.background_white);
+                logo.setBackgroundResource(R.drawable.logonew);
+                break;
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                container.setBackgroundResource(R.drawable.background_white);
+                logo.setBackgroundResource(R.drawable.logonew);
+                break;
+        }
         FirebaseUser user = mAuth.getCurrentUser();
         if (PhoneAuth.authflag == 1) {
             if (getArguments().getInt("phoneauth") == 10) {

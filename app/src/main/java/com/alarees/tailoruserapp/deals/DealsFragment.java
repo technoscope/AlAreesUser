@@ -6,17 +6,23 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.alarees.tailoruserapp.R;
 import com.alarees.tailoruserapp.TitledFragment;
+import com.alarees.tailoruserapp.home.HomeFragment;
 
 public class DealsFragment extends Fragment implements TitledFragment {
-LinearLayout container;
+    LinearLayout container;
+    ImageView backpress;
+    FragmentManager manager;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +39,16 @@ LinearLayout container;
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        container=view.findViewById(R.id.deals_container);
+        manager=getFragmentManager();
+        backpress=view.findViewById(R.id.backpress_deals);
+        backpress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //clickback
+                backtoparent();
+            }
+        });
+        container = view.findViewById(R.id.deals_container);
         int nightModeFlags =
                 this.getResources().getConfiguration().uiMode &
                         Configuration.UI_MODE_NIGHT_MASK;
@@ -48,6 +63,13 @@ LinearLayout container;
                 //doStuff();
                 break;
         }
+    }
+
+    private void backtoparent() {
+        FragmentTransaction ft = manager.beginTransaction();
+        ft.replace(R.id.nav_host_fragment, new HomeFragment());
+        ft.addToBackStack("HomeFragment");
+        ft.commit();
     }
 
     @Override

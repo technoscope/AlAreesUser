@@ -1,5 +1,6 @@
 package com.alarees.tailoruserapp.more.orders;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.alarees.tailoruserapp.R;
@@ -38,6 +40,7 @@ public class MyOrders extends Fragment implements TitledFragment {
     String ordernode;
     ImageView myorder;
     FragmentManager manager;
+    LinearLayout container;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,21 @@ public class MyOrders extends Fragment implements TitledFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        container=view.findViewById(R.id.container_order);
+        int nightModeFlags =
+                this.getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                container.setBackgroundResource(R.drawable.background);
+                break;
+            case Configuration.UI_MODE_NIGHT_NO:
+                container.setBackgroundResource(R.drawable.background_white);
+                break;
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                container.setBackgroundResource(R.drawable.background_white);
+                break;
+        }
         myorder = view.findViewById(R.id.back_myorder);
         myorder.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,8 +122,6 @@ public class MyOrders extends Fragment implements TitledFragment {
 
                             }
                         });
-
-
                     }
                     recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                     recyclerView.setAdapter(new OrdersAdapter(ordermodels));
@@ -126,7 +142,6 @@ public class MyOrders extends Fragment implements TitledFragment {
             ft.commit();
         }
     }
-
     @Override
     public String getTitle() {
         return "My Orders";

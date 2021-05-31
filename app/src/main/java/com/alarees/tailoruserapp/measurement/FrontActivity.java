@@ -3,11 +3,13 @@ package com.alarees.tailoruserapp.measurement;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.alarees.tailoruserapp.R;
 import com.vansuita.pickimage.bean.PickResult;
@@ -20,6 +22,7 @@ import java.io.ByteArrayOutputStream;
 public class FrontActivity extends AppCompatActivity implements IPickResult {
     public static String frontPhoto;
     Button front_take;
+    LinearLayout container;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,21 @@ public class FrontActivity extends AppCompatActivity implements IPickResult {
                 PickImageDialog.build(new PickSetup()).show(FrontActivity.this);
             }
         });
+        container=findViewById(R.id.container_front);
+        int nightModeFlags =
+                this.getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                container.setBackgroundResource(R.drawable.background);
+                break;
+            case Configuration.UI_MODE_NIGHT_NO:
+                container.setBackgroundResource(R.drawable.background_white);
+                break;
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                container.setBackgroundResource(R.drawable.background_white);
+                break;
+        }
     }
 
     @Override

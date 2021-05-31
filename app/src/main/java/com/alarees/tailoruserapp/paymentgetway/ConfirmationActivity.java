@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +32,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
+import butterknife.BindView;
+
 public class ConfirmationActivity extends AppCompatActivity {
     DatabaseReference myRef;
     ArrayList<CartUnstitchedModel> ordermodels;
@@ -37,6 +41,7 @@ public class ConfirmationActivity extends AppCompatActivity {
     ImageView back, statusimagee;
     TextView status, congrats;
     Button contin;
+    LinearLayout container;
     String orderid;
     String totalpayment;
 
@@ -45,6 +50,21 @@ public class ConfirmationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmation);
         getSupportActionBar().hide();
+        container=findViewById(R.id.confirmation_container);
+        int nightModeFlags =
+                this.getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                container.setBackgroundResource(R.drawable.background);
+                break;
+            case Configuration.UI_MODE_NIGHT_NO:
+                container.setBackgroundResource(R.drawable.background_white);
+                break;
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                //doStuff();
+                break;
+        }
         status = findViewById(R.id.status);
         congrats = findViewById(R.id.congrates);
         back = findViewById(R.id.back_confirmation);

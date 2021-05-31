@@ -1,40 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/deals_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:orientation="vertical"
-    android:id="@+id/deals_container"
     tools:context="com.alarees.tailoruserapp.deals.DealsFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="horizontal"
-        android:background="@color/green_900">
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height= "wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_baseline_arrow_back_white_24"
-            android:layout_marginStart="15sp"
-            android:layout_gravity="center"
-            />
-        <TextView
-            android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/green_900"
+
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="8"
-            android:textColor="@color/white"
-            android:textSize="18dp"
-            android:layout_gravity="center"
-            android:fontFamily="@font/fidena"
-            android:text="@string/dealss"/>
+            android:layout_margin="4dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp">
+
+            <ImageView
+                android:id="@+id/backpress_deals"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="15sp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_baseline_arrow_back_white_24" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="8"
+                android:fontFamily="@font/fidena"
+                android:text="@string/dealss"
+                android:textColor="@color/whitetitle"
+                android:textSize="18dp" />
+        </LinearLayout>
+
     </LinearLayout>
 
- <androidx.recyclerview.widget.RecyclerView
-     android:layout_width="match_parent"
-     android:layout_height="wrap_content"
-     android:orientation="vertical"
-     ></androidx.recyclerview.widget.RecyclerView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
 </LinearLayout>

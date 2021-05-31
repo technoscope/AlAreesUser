@@ -5,11 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/background"
+    android:id="@+id/forgotpass_container"
 
     tools:context="com.alarees.tailoruserapp.account.ForgotPassFragment">
 
     <ImageView
+        android:id="@+id/forgotpass_logo"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_gravity="center"

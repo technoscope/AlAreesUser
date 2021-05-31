@@ -21,7 +21,7 @@
             android:padding="3dp"
             android:fontFamily="@font/fidena"
             android:text="@string/my_shopping_cart"
-            android:textColor="@color/white"
+            android:textColor="@color/whitetitle"
             android:textSize="18dp"
             android:textStyle="bold" />
 
@@ -44,8 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_gravity="top"
-        android:background="@drawable/background"/>
+        android:layout_gravity="top" />
 
     <LinearLayout
         android:id="@+id/lvlbacket"
@@ -70,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="Totals :  "
-                android:textColor="@color/white"
+                android:textColor="@color/whitetitle"
                 android:textSize="16dp"
                 android:textStyle="bold" />
 
@@ -81,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="0"
-                android:textColor="@color/white"
+                android:textColor="@color/whitetitle"
                 android:textSize="16dp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -109,7 +108,7 @@
                     android:gravity="center"
                     android:padding="5dp"
                     android:text="Checkout"
-                    android:textColor="@color/white"
+                    android:textColor="@color/whitetitle"
                     android:textSize="16dp"
                     android:textStyle="bold" />
             </LinearLayout>

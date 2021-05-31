@@ -1,5 +1,6 @@
 package com.alarees.tailoruserapp.measurement.measurementlist;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,10 +10,12 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import butterknife.BindView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +24,7 @@ import com.alarees.tailoruserapp.R;
 import com.alarees.tailoruserapp.TitledFragment;
 import com.alarees.tailoruserapp.measurement.MyDetialFragment;
 import com.alarees.tailoruserapp.measurement.ParentMeasurementDetail;
+import com.alarees.tailoruserapp.more.MoreItemFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -37,6 +41,8 @@ public class MeasurementListFragment extends Fragment implements TitledFragment 
     FragmentManager manager;
     LinearLayout addnewmeasurement;
     DatabaseReference mRef;
+    LinearLayout container;
+    ImageView backpress;
     @Override
     public void onStart() {
         super.onStart();
@@ -56,6 +62,29 @@ public class MeasurementListFragment extends Fragment implements TitledFragment 
         super.onViewCreated(view, savedInstanceState);
         models = new ArrayList<>();
         manager = getFragmentManager();
+        container=view.findViewById(R.id.containerlf);
+        backpress=view.findViewById(R.id.back_measurementssss);
+        backpress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loadFragment(new MoreItemFragment());
+            }
+        });
+        int nightModeFlags =
+                this.getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                container.setBackgroundResource(R.drawable.background);
+                break;
+            case Configuration.UI_MODE_NIGHT_NO:
+                container.setBackgroundResource(R.drawable.background_white);
+                break;
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                container.setBackgroundResource(R.drawable.background_white);
+                break;
+        }
+
         parentmeasuresment = view.findViewById(R.id.id_parentmeasurement);
         parentmeasuresment.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -4,12 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/container_signin"
+    android:background="@drawable/background"
     tools:context="com.alarees.tailoruserapp.account.SigninFragment">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:animateLayoutChanges="true"
-        android:background="@drawable/background"
         android:fillViewport="true"
         android:orientation="vertical"
         tools:context=".activity.SignInActivity">
@@ -37,6 +38,7 @@
                     android:layout_height="200dp"
                     android:layout_gravity="center"
                     android:layout_margin="10dp"
+                    android:id="@+id/logo"
                     android:src="@drawable/ic_logo1" />
             </LinearLayout>
 
@@ -189,7 +191,7 @@
                     android:layoutDirection="ltr"
                     android:clickable="true"
                     android:layout_gravity="center"
-                    android:backgroundTint="@color/white"
+                    android:backgroundTint="@color/whitetitle"
                     android:orientation="horizontal"
                     android:focusable="true">
                     <ImageView

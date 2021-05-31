@@ -1,6 +1,7 @@
 package com.alarees.tailoruserapp.measurement;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,6 +37,7 @@ public class HowToFragment extends Fragment implements TitledFragment {
     ImageView replayvideo;
     Button nextbtn;
     public static int childflag = 0;
+    LinearLayout container;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,21 @@ public class HowToFragment extends Fragment implements TitledFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        container=view.findViewById(R.id.container_howto);
+        int nightModeFlags =
+                this.getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                container.setBackgroundResource(R.drawable.background);
+                break;
+            case Configuration.UI_MODE_NIGHT_NO:
+                container.setBackgroundResource(R.drawable.background_white);
+                break;
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                container.setBackgroundResource(R.drawable.background_white);
+                break;
+        }
         videoView = view.findViewById(R.id.videoview);
         chngetext = view.findViewById(R.id.chngetimetext);
         replayvideo = view.findViewById(R.id.replay_video);

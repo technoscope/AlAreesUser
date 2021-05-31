@@ -1,18 +1,45 @@
 package com.alarees.tailoruserapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import butterknife.BindView;
+import butterknife.Unbinder;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 
 public class SplashScreen extends AppCompatActivity {
     Handler handler;
+    LinearLayout container;
+    ImageView logo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splashscreen);
+        container = findViewById(R.id.container_splash);
+        logo = findViewById(R.id.logosplash);
+        int nightModeFlags =
+                this.getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                container.setBackgroundResource(R.drawable.splash);
+                logo.setBackgroundResource(R.drawable.ic_logo1);
+                break;
+            case Configuration.UI_MODE_NIGHT_NO:
+                container.setBackgroundResource(R.drawable.splash_white);
+                logo.setBackgroundResource(R.drawable.logonew);
+                break;
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                container.setBackgroundResource(R.drawable.splash_white);
+                logo.setBackgroundResource(R.drawable.logonew);
+                break;
+        }
         getSupportActionBar().hide();
         handler = new Handler();
         handler.postDelayed(new Runnable() {

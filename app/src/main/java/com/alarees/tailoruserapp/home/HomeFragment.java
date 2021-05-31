@@ -28,6 +28,7 @@ import com.alarees.tailoruserapp.R;
 import com.alarees.tailoruserapp.contact.ContactFragment;
 import com.alarees.tailoruserapp.deals.DealsFragment;
 import com.alarees.tailoruserapp.measurement.MyDetialFragment;
+import com.alarees.tailoruserapp.measurement.measurementlist.MeasurementListFragment;
 import com.alarees.tailoruserapp.readymade.ReadyMadeItemsFragment;
 import com.alarees.tailoruserapp.unstitched.UnstitchedItemsFragment;
 
@@ -111,7 +112,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.nav_host_fragment, new MyDetialFragment());
+                ft.replace(R.id.nav_host_fragment, new MeasurementListFragment());
                 ft.addToBackStack("HomeFragment");
                 ft.commit();
             }

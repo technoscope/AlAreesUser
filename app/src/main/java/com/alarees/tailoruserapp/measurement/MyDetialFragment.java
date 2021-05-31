@@ -2,6 +2,7 @@ package com.alarees.tailoruserapp.measurement;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -100,6 +101,8 @@ public class MyDetialFragment extends Fragment implements TitledFragment {
     TextView  neck_length;
     @BindView(R.id.rise)
     TextView  rise;
+    @BindView(R.id.container)
+    LinearLayout container;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -117,6 +120,20 @@ public class MyDetialFragment extends Fragment implements TitledFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
+        int nightModeFlags =
+                this.getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                container.setBackgroundResource(R.drawable.background);
+                break;
+            case Configuration.UI_MODE_NIGHT_NO:
+                container.setBackgroundResource(R.drawable.background_white);
+                break;
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                container.setBackgroundResource(R.drawable.background_white);
+                break;
+        }
         mRef = FirebaseDatabase.getInstance().getReference("AdminDatabase");
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();

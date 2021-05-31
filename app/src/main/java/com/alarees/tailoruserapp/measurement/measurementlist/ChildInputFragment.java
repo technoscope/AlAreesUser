@@ -1,6 +1,7 @@
 package com.alarees.tailoruserapp.measurement.measurementlist;
 
 import android.annotation.SuppressLint;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +37,9 @@ public class ChildInputFragment extends Fragment {
     TextView name;
     @BindView(R.id.id_okay_btn)
     Button okay_btn;
+    @BindView(R.id.container)
+    LinearLayout container;
+
     public static int childheight, childweight;
     public static String childname;
 
@@ -53,7 +59,20 @@ public class ChildInputFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
-
+        int nightModeFlags =
+                this.getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                container.setBackgroundResource(R.drawable.background);
+                break;
+            case Configuration.UI_MODE_NIGHT_NO:
+                container.setBackgroundResource(R.drawable.background_white);
+                break;
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                container.setBackgroundResource(R.drawable.background_white);
+                break;
+        }
         okay_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

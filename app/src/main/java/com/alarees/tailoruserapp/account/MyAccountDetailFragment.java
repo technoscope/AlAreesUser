@@ -1,5 +1,6 @@
 package com.alarees.tailoruserapp.account;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,6 +51,10 @@ public class MyAccountDetailFragment extends Fragment{
     EditText address;
     @BindView(R.id.btn_singup)
     Button singup;
+    @BindView(R.id.container)
+    LinearLayout container;
+    @BindView(R.id.logo)
+    ImageView logo;
     Unbinder unbinder;
     private FirebaseAuth mAuth;
     // [END declare_auth]
@@ -69,7 +76,23 @@ public class MyAccountDetailFragment extends Fragment{
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         unbinder = ButterKnife.bind(this, view);
-       // Toast.makeText(getContext(), ""+FirebaseAuth.getInstance().getCurrentUser().getUid(), Toast.LENGTH_SHORT).show();
+        int nightModeFlags =
+                this.getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                container.setBackgroundResource(R.drawable.background);
+                logo.setBackgroundResource(R.drawable.ic_logo1);
+                break;
+            case Configuration.UI_MODE_NIGHT_NO:
+                container.setBackgroundResource(R.drawable.background_white);
+                logo.setBackgroundResource(R.drawable.logonew);
+                break;
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                container.setBackgroundResource(R.drawable.background_white);
+                logo.setBackgroundResource(R.drawable.logonew);
+                break;
+        }
         mRef = FirebaseDatabase.getInstance().getReference("AdminDatabase");
         mRef.child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("UserProfile").addValueEventListener(new ValueEventListener() {
             @Override

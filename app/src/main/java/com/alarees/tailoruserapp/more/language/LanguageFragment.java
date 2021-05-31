@@ -58,6 +58,22 @@ public class LanguageFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mypref = getContext().getSharedPreferences("language", Context.MODE_PRIVATE);
+        container = view.findViewById(R.id.language_container);
+        int nightModeFlags =
+                this.getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                container.setBackgroundResource(R.drawable.background);
+                break;
+            case Configuration.UI_MODE_NIGHT_NO:
+                container.setBackgroundResource(R.drawable.background_white);
+                break;
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                container.setBackgroundResource(R.drawable.background_white);
+                break;
+        }
+
         list = new ArrayList<>();
         if(mypref.getInt("en",0)==0&&mypref.getInt("ar",0)==0) {
             list = new ArrayList<>();

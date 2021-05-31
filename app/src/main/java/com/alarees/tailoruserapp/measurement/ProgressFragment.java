@@ -3,6 +3,7 @@ package com.alarees.tailoruserapp.measurement;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,6 +52,7 @@ public class ProgressFragment extends Fragment {
     TextView progresstxt;
     SharedPreferences sharedpreferences;
     SharedPreferences.Editor editor;
+    LinearLayout container;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -67,6 +70,21 @@ public class ProgressFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        container=view.findViewById(R.id.container_progress);
+        int nightModeFlags =
+                this.getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                container.setBackgroundResource(R.drawable.background);
+                break;
+            case Configuration.UI_MODE_NIGHT_NO:
+                container.setBackgroundResource(R.drawable.background_white);
+                break;
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                container.setBackgroundResource(R.drawable.background_white);
+                break;
+        }
         sharedpreferences = getActivity().getSharedPreferences("3dlookUserurl", Context.MODE_PRIVATE);
         editor = sharedpreferences.edit();
         progresstxt = view.findViewById(R.id.progress_text);
@@ -84,13 +102,13 @@ public class ProgressFragment extends Fragment {
                         h.postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                if(childflag==1){
+                                if (childflag == 1) {
                                     progresstxt.setText("Success");
                                     FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                                     ft.replace(R.id.nav_host_fragment, new ChildMeasurementDetail());
                                     ft.addToBackStack("ProgressFragment");
                                     ft.commit();
-                                }else {
+                                } else {
                                     progresstxt.setText("Success");
                                     FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                                     ft.replace(R.id.nav_host_fragment, new ParentMeasurementDetail());
@@ -129,12 +147,12 @@ public class ProgressFragment extends Fragment {
             JsonObjectRequest jsonObjReq = new JsonObjectRequest(1, api, jsonObject, new Response.Listener<JSONObject>() {
                 public void onResponse(JSONObject response) {
                     try {
-                        if(childflag==1){
+                        if (childflag == 1) {
                             String res = response.getString("task_set_url");
                             editor.putString("geturlchild", res);
                             editor.apply();
                             callBack.onSuccess(res);
-                        }else {
+                        } else {
                             String res = response.getString("task_set_url");
                             editor.putString("geturl", res);
                             editor.apply();

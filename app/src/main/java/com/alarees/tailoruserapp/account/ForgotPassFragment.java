@@ -1,5 +1,6 @@
 package com.alarees.tailoruserapp.account;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.alarees.tailoruserapp.R;
@@ -21,12 +24,16 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
+import butterknife.BindView;
+
 
 public class ForgotPassFragment extends Fragment {
     FirebaseAuth mAuth;
     EditText textInputEmail;
     Button sendbutton;
     FragmentManager manager;
+    ImageView logoimage;
+    LinearLayout container;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +53,24 @@ public class ForgotPassFragment extends Fragment {
         manager=getFragmentManager();
         textInputEmail=view.findViewById(R.id.id_reset_email);
         sendbutton=view.findViewById(R.id.send_email);
+        logoimage= view.findViewById(R.id.forgotpass_logo);
+        container=view.findViewById(R.id.forgotpass_container);
+        int nightModeFlags =
+                this.getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                container.setBackgroundResource(R.drawable.background);
+                logoimage.setBackgroundResource(R.drawable.ic_logo1);
+                break;
+            case Configuration.UI_MODE_NIGHT_NO:
+                container.setBackgroundResource(R.drawable.background_white);
+                logoimage.setBackgroundResource(R.drawable.logonew);
+                break;
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                //doStuff();
+                break;
+        }
         sendbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

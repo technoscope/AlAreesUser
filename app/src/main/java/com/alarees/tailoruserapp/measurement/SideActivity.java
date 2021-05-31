@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.alarees.tailoruserapp.DashboardActivity;
 import com.alarees.tailoruserapp.R;
@@ -37,11 +39,28 @@ public class SideActivity extends AppCompatActivity implements IPickResult {
     public static int weight;
     DatabaseReference myRef;
     public static String sidePhoto;
+    LinearLayout container;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_side);
+        container=findViewById(R.id.container_sideactivity);
+
         getSupportActionBar().hide();
+        int nightModeFlags =
+                this.getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                container.setBackgroundResource(R.drawable.background);
+                break;
+            case Configuration.UI_MODE_NIGHT_NO:
+                container.setBackgroundResource(R.drawable.background_white);
+                break;
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                container.setBackgroundResource(R.drawable.background_white);
+                break;
+        }
         if(childflag==0) {
             myRef = FirebaseDatabase.getInstance().getReference("AdminDatabase");
             myRef.child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("UserProfile").addValueEventListener(new ValueEventListener() {

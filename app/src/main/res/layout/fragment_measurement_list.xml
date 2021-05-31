@@ -1,46 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/containerlf"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".measurement.measurementlist.MeasurementListFragment"
-    android:background="@drawable/background">
-    <ImageView
-        android:id="@+id/back_measurement"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:layout_gravity="left"
-        android:background="@drawable/ic_baseline_arrow_back_24" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:text="@string/measurements"
-        android:layout_marginBottom="20dp"
-        android:textColor="@color/white"
-        android:gravity="center"
-        android:textSize="18dp"
-        android:fontFamily="@font/fidena"/>
+    tools:context=".measurement.measurementlist.MeasurementListFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding= "10dp"
-        android:alpha="0.7">
-    <TextView
-        android:id="@+id/id_parentmeasurement"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="4dp">
+
+        <ImageView
+            android:id="@+id/back_measurementssss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/ic_baseline_arrow_back_24" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/fidena"
+            android:padding="5dp"
+            android:text="@string/measurements"
+            android:textColor="@color/green_900"
+            android:textSize="18dp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:text="@string/my_measurement"
-        android:textStyle="bold"
-        android:background="@color/grey"
-        android:textSize="18sp"
-        android:textColor="@color/white"
-        />
+        android:alpha="0.6"
+        android:orientation="horizontal"
+        android:padding="4dp">
+
+        <TextView
+            android:id="@+id/id_parentmeasurement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/green_900"
+            android:padding="10dp"
+            android:text="@string/my_measurement"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -49,29 +60,29 @@
         android:layout_height="wrap_content" />
 
     <LinearLayout
+        android:id="@+id/add_new_measurement"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:id="@+id/add_new_measurement"
         android:layout_marginTop="20dp"
-        >
+        android:orientation="vertical">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:src="@drawable/ic_baseline_add_24" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/fidena"
             android:paddingStart="5dp"
             android:paddingEnd="5dp"
             android:paddingBottom="5dp"
-            android:textSize="15dp"
-            android:textAlignment="center"
             android:text="Add new Measurement"
-            android:fontFamily="@font/fidena"
-            android:textColor="@color/green_900" />
+            android:textAlignment="center"
+            android:textColor="@color/green_900"
+            android:textSize="15dp" />
 
     </LinearLayout>
 

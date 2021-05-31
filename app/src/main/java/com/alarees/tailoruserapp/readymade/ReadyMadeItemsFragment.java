@@ -70,7 +70,7 @@ public class ReadyMadeItemsFragment extends Fragment implements TitledFragment {
                 ft.commit();
             }
         });
-        container=view.findViewById(R.id.readymade_container);
+        container=view.findViewById(R.id.container_readymade);
         int nightModeFlags =
                 this.getResources().getConfiguration().uiMode &
                         Configuration.UI_MODE_NIGHT_MASK;

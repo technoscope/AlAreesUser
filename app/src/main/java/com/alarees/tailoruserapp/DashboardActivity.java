@@ -94,6 +94,21 @@ public class DashboardActivity extends AppCompatActivity implements IPickResult 
         createNotificationChannel();
         navigation = findViewById(R.id.navigation);
         Fresco.initialize(this);
+
+        int nightModeFlags =
+                this.getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                navigation.setBackgroundResource(R.drawable.bck);
+                break;
+            case Configuration.UI_MODE_NIGHT_NO:
+                navigation.setBackgroundResource(R.drawable.bck_white);
+                break;
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                navigation.setBackgroundResource(R.drawable.bck_white);
+                break;
+        }
         mypref = getSharedPreferences("language", Context.MODE_PRIVATE);
         list = new ArrayList<>();
         if(mypref.getInt("en",0)==0&&mypref.getInt("ar",0)==0) {
@@ -203,20 +218,6 @@ public class DashboardActivity extends AppCompatActivity implements IPickResult 
                     }
                 });
 
-                int nightModeFlags =
-                    this.getResources().getConfiguration().uiMode &
-                                Configuration.UI_MODE_NIGHT_MASK;
-                switch (nightModeFlags) {
-                    case Configuration.UI_MODE_NIGHT_YES:
-                        navigation.setBackgroundResource(R.drawable.bck);
-                        break;
-                    case Configuration.UI_MODE_NIGHT_NO:
-                        navigation.setBackgroundResource(R.drawable.bck_white);
-                        break;
-                    case Configuration.UI_MODE_NIGHT_UNDEFINED:
-                        //doStuff();
-                        break;
-                }
             }
         } catch (Exception e) {
         }

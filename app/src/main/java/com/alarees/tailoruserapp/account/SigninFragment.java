@@ -1,6 +1,7 @@
 package com.alarees.tailoruserapp.account;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -19,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -63,6 +65,10 @@ public class SigninFragment extends Fragment implements TitledFragment {
     TextView txtforgot;
     @BindView(R.id.id_google_signin)
     LinearLayout googlesignin;
+    @BindView(R.id.container_signin)
+    LinearLayout container;
+    @BindView(R.id.logo)
+    ImageView logo;
     FragmentManager manager;
     private int RC_SIGN_IN = 9902;
     private GoogleSignInClient mGoogleSignInClient;
@@ -93,6 +99,24 @@ public class SigninFragment extends Fragment implements TitledFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
+        //container = view.findViewById(R.id.container_signin);
+        int nightModeFlags =
+                this.getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                container.setBackgroundResource(R.drawable.background);
+                logo.setBackgroundResource(R.drawable.ic_logo1);
+                break;
+            case Configuration.UI_MODE_NIGHT_NO:
+                container.setBackgroundResource(R.drawable.background_white);
+                logo.setBackgroundResource(R.drawable.logonew);
+                break;
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                container.setBackgroundResource(R.drawable.background_white);
+                logo.setBackgroundResource(R.drawable.logonew);
+                break;
+        }
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
