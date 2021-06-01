@@ -1,10 +1,14 @@
 package com.alarees.tailoruserapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+
 import butterknife.BindView;
 import butterknife.Unbinder;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,11 +20,22 @@ public class SplashScreen extends AppCompatActivity {
     Handler handler;
     LinearLayout container;
     ImageView logo;
+    SharedPreferences modepref;
+    SharedPreferences.Editor prefeditor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splashscreen);
+        modepref = getSharedPreferences("Mode", Context.MODE_PRIVATE);
+        prefeditor = modepref.edit();
+        if (modepref.getInt("darkmode", 0) == 0) {
+            //white
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        } else if (modepref.getInt("darkmode", 1) == 1) {
+            //dark
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
         container = findViewById(R.id.container_splash);
         logo = findViewById(R.id.logosplash);
         int nightModeFlags =

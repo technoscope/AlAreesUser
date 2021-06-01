@@ -3,6 +3,7 @@ package com.alarees.tailoruserapp;
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
@@ -13,6 +14,7 @@ import android.app.FragmentManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.UiModeManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -70,12 +72,13 @@ public class DashboardActivity extends AppCompatActivity implements IPickResult 
         //new change333
     SharedPreferences sharedpreferences;
     Editor editor;
+    SharedPreferences modepref;
+    SharedPreferences.Editor prefeditor;
+
     Spinner spinner;
     ArrayAdapter<String> spinneradapter;
     ArrayList<String> list;
     SharedPreferences mypref;
-    //ne chnages
-    Editor shareeditor;
 
     public DashboardActivity() {
         this.fragments = new HashMap<Integer, Fragment>() {{
@@ -84,7 +87,6 @@ public class DashboardActivity extends AppCompatActivity implements IPickResult 
             put(R.id.nav_more, new MoreItemFragment());
         }};
     }
-
     @SuppressLint("CommitPrefEdits")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,9 +94,18 @@ public class DashboardActivity extends AppCompatActivity implements IPickResult 
         setContentView(R.layout.activity_dashboard);
         getSupportActionBar().hide();
         createNotificationChannel();
+    //    setNightMode(getApplicationContext(), true);
         navigation = findViewById(R.id.navigation);
         Fresco.initialize(this);
-
+        modepref = getSharedPreferences("Mode", Context.MODE_PRIVATE);
+        prefeditor = modepref.edit();
+        if (modepref.getInt("darkmode", 0) == 0) {
+            //white
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        } else if (modepref.getInt("darkmode", 1) == 1) {
+            //dark
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
         int nightModeFlags =
                 this.getResources().getConfiguration().uiMode &
                         Configuration.UI_MODE_NIGHT_MASK;
@@ -330,6 +341,7 @@ public class DashboardActivity extends AppCompatActivity implements IPickResult 
         }
         resources.updateConfiguration(config, dm);
     }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent imageData) {

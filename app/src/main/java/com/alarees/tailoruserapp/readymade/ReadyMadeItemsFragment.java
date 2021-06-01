@@ -82,7 +82,7 @@ public class ReadyMadeItemsFragment extends Fragment implements TitledFragment {
                 container.setBackgroundResource(R.drawable.background_white);
                 break;
             case Configuration.UI_MODE_NIGHT_UNDEFINED:
-                //doStuff();
+                container.setBackgroundResource(R.drawable.background_white);
                 break;
         }
         mRef = FirebaseDatabase.getInstance().getReference("AdminDatabase");

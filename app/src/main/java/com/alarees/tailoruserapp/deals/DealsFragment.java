@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -12,12 +13,14 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.alarees.tailoruserapp.R;
 import com.alarees.tailoruserapp.TitledFragment;
 import com.alarees.tailoruserapp.home.HomeFragment;
+import com.google.gson.internal.$Gson$Preconditions;
 
 public class DealsFragment extends Fragment implements TitledFragment {
     LinearLayout container;

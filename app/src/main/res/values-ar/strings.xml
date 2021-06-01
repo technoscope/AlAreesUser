@@ -84,6 +84,7 @@
     <string name="account">الملف الشخصي</string>
     <string name="language">لغة</string>
     <string name="Welcome">أهلا بك</string>
+    <string name="Darkmode">الوضع المظلم</string>
     <string name="Confirm">يتأكد</string>
     <string name="languagedes">اللغة التي ترغب في استخدامها في التطبيق بشكل افتراضي يتم تحديد اللغة الإنجليزية. يمكنك تغيير لغتك أدناه.</string>
     <string name="your_cart_is_empty">عربة التسوق فارغة</string>

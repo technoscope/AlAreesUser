@@ -127,6 +127,7 @@ public class LanguageFragment extends Fragment {
             public void onClick(View view) {
                 Toast.makeText(getContext(), getResources().getString(R.string.langaugechangesucess), Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getContext(),DashboardActivity.class));
+                getActivity().finishAffinity();
 
             }
 

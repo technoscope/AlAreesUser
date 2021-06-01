@@ -23,15 +23,68 @@
             android:layout_height="100dp"
             android:layout_gravity="center"
             android:layout_marginTop="18dp"
-            android:background="@mipmap/logo1" />
+             />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="20dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
         android:alpha="0.8"
         app:layoutManager="LinearLayoutManager"
         tools:listitem="@layout/fragment_more_item"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:alpha="0.8"
+            android:background="@drawable/hallow_round_black_bg"
+            android:backgroundTint="@color/green_900"
+            android:focusable="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_baseline_dark_mode_24"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="4dp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="@dimen/text_margin"
+                    android:layout_marginEnd="@dimen/text_margin"
+                    android:layout_weight="1"
+                    android:text="@string/Darkmode"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/fidena"/>
+                <Switch
+                    android:theme="@style/MySwitch"
+                    android:id="@+id/swith_mode"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    tools:ignore="UseSwitchCompatOrMaterialXml">
+                </Switch>
+
+            </LinearLayout>
+
+        </LinearLayout>
 </LinearLayout>

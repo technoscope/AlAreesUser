@@ -86,6 +86,7 @@
     <string name="account">My Account</string>
     <string name="Confirm">Confirm</string>
     <string name="language">Language</string>
+    <string name="Darkmode">Dark Mode</string>
     <string name="languagedes">Which language you would like to use in app. By default English langauge is selected. You can change your langauage below.</string>
     <string name="your_cart_is_empty">Your Cart is empty</string>
     <string name="langaugechangesucess">Language is successfully changed</string>
