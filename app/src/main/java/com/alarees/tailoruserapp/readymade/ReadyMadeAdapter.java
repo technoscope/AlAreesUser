@@ -130,9 +130,6 @@ public class ReadyMadeAdapter extends RecyclerView.Adapter<ReadyMadeAdapter.View
         } catch (Exception e) {
             Toast.makeText(context, "error image", Toast.LENGTH_SHORT).show();
         }
-//        Glide.with(context)
-//                .load(Uri.parse(uri))
-//                .into(dialogiamge);
         dialogButtonCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
