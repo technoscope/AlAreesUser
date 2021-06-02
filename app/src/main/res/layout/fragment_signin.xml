@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/container_signin"
-    android:background="@drawable/background"
     tools:context="com.alarees.tailoruserapp.account.SigninFragment">
     <ScrollView
         android:layout_width="match_parent"
@@ -155,6 +154,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:elevation="10dp"
+                    android:visibility="gone"
                     android:gravity="center"
                     android:orientation="horizontal">
 
@@ -187,6 +187,7 @@
                     android:layout_height="48dp"
                     android:background="@drawable/hallow_round_black_bg"
                     android:padding="2dp"
+                    android:layout_marginTop="10dp"
                     android:elevation="2dp"
                     android:layoutDirection="ltr"
                     android:clickable="true"

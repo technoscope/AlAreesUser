@@ -46,7 +46,7 @@ public class SignUpFragment extends Fragment implements TitledFragment {
     @BindView(R.id.ed_email)
     EditText ename;
     @BindView(R.id.ed_password)
-    EditText epassowrd;
+    EditText epassowrdd;
     @BindView(R.id.ed_mobile)
     EditText mobileno;
     @BindView(R.id.ed_address)
@@ -106,11 +106,22 @@ public class SignUpFragment extends Fragment implements TitledFragment {
         }
         FirebaseUser user = mAuth.getCurrentUser();
         if (PhoneAuth.authflag == 1) {
-            if (getArguments().getInt("phoneauth") == 10) {
-                mobileno.setText(user.getPhoneNumber());
+            if (getArguments() != null) {
+                if (getArguments().getInt("phoneauth") == 10) {
+                    mobileno.setText(user.getPhoneNumber());
+                }
+            } else {
+                FirebaseUser userr = FirebaseAuth.getInstance().getCurrentUser();
+                if (userr != null) {
+                    mobileno.setText(userr.getPhoneNumber());
+                }
             }
         } else if (PhoneAuth.authflag == 2) {
-            ename.setText(user.getEmail());
+            FirebaseUser userre = FirebaseAuth.getInstance().getCurrentUser();
+            if (userre != null) {
+                ename.setText(user.getEmail());
+
+            }
 
         }
         singup.setOnClickListener(new View.OnClickListener() {
@@ -124,7 +135,7 @@ public class SignUpFragment extends Fragment implements TitledFragment {
                     updateUI(user);
 
                 } else {
-                    createAccount(ename.getText().toString(), epassowrd.getText().toString());
+                    //createAccount(ename.getText().toString(), epassowrd.getText().toString());
                 }
             }
         });

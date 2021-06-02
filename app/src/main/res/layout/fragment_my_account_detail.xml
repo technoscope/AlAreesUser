@@ -210,6 +210,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="@string/password"
+                        android:visibility="gone"
                         android:textSize="12sp"
                         android:fontFamily="@font/fidena"
                         android:textColor="@color/white"/>
@@ -220,6 +221,7 @@
                         android:layout_height="50dp"
                         android:background="@drawable/hallow_round_black_bg"
                         android:padding="4dp"
+                        android:visibility="gone"
                         android:backgroundTint="@color/textviewcolor"
                         android:textColor="@color/white"
                         android:alpha="0.5"

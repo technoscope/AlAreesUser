@@ -43,8 +43,8 @@ public class MyAccountDetailFragment extends Fragment{
     EditText eWeight;
     @BindView(R.id.ed_height)
     EditText eHeight;
-    @BindView(R.id.ed_password)
-    TextView epassowrd;
+//    @BindView(R.id.ed_password)
+//    TextView epassowrd;
     @BindView(R.id.ed_mobile)
     EditText mobileno;
     @BindView(R.id.ed_address)
@@ -107,7 +107,7 @@ public class MyAccountDetailFragment extends Fragment{
                 address.setText(model.getAddress());
                 ename.setText(model.getEmail());
                 mobileno.setText(model.getMobileno());
-                epassowrd.setText("xxxxxxxxxxxx");
+               // epassowrd.setText("xxxxxxxxxxxx");
                 eHeight.setText(model.getHeight());
                 eWeight.setText(model.getWeight());
 

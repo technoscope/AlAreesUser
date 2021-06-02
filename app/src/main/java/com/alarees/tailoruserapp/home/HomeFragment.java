@@ -93,8 +93,8 @@ public class HomeFragment extends Fragment {
                 logoimage.setBackgroundResource(R.drawable.logonew);
                 break;
             case Configuration.UI_MODE_NIGHT_UNDEFINED:
-                container.setBackgroundResource(R.drawable.background);
-                logoimage.setBackgroundResource(R.drawable.ic_logo1);
+                container.setBackgroundResource(R.drawable.background_white);
+                logoimage.setBackgroundResource(R.drawable.logonew);
                 break;
         }
 

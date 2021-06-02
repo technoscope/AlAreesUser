@@ -45,7 +45,6 @@ public class ReadyMadeAdapter extends RecyclerView.Adapter<ReadyMadeAdapter.View
         this.models = models;
         this.mypref = context.getSharedPreferences("language", Context.MODE_PRIVATE);
     }
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -79,30 +78,7 @@ public class ReadyMadeAdapter extends RecyclerView.Adapter<ReadyMadeAdapter.View
             @Override
             public void onClick(View view) {
                 showDailog(context, position);
-//                Bundle bundle = new Bundle();
-//                bundle.putString("itemname", models.get(position).getItemName());
-//                bundle.putString("itemprice", models.get(position).getItemPrice());
-//                bundle.putString("itemdes", models.get(position).getItemDes());
-//                bundle.putString("itemimg", models.get(position).getImgUrl());
-//                bundle.putString("smallqty", models.get(position).getSmallQty());
-//                bundle.putString("largeqty", models.get(position).getLargeQty());
-//                bundle.putString("mediumqty", models.get(position).getMediumQty());
-//                bundle.putString("itemid", models.get(position).getItemid());
-//                bundle.putString("totalqty", models.get(position).getTotalQty());
-//                bundle.putString("fromReadymade", "ready");
 
-                /*   FragmentTransaction ft = manager.beginTransaction();
-                CartFragment cf = new CartFragment();
-                cf.setArguments(bundle);
-                ft.replace(R.id.nav_host_fragment, cf);
-                ft.addToBackStack("ReadyMadeitemsFragment");
-                ft.commit();*/
-//                FragmentTransaction ft = manager.beginTransaction();
-//                ReadyMadeItemDetailFragment detail=new ReadyMadeItemDetailFragment();
-//                detail.setArguments(bundle);
-//                ft.replace(R.id.nav_host_fragment, detail);
-//                ft.addToBackStack("ReadyMadeItemsFragment");
-//                ft.commit();
             }
         });
         if (mypref.getInt("en", 0) == 1 && mypref.getInt("ar", 0) == 0) {
@@ -111,6 +87,8 @@ public class ReadyMadeAdapter extends RecyclerView.Adapter<ReadyMadeAdapter.View
         } else if (mypref.getInt("ar", 0) == 1 && mypref.getInt("en", 0) == 0) {
             holder.arrowrtl.setImageResource(R.drawable.icon_arrow_left);
 
+        }else {
+            holder.arrowrtl.setImageResource(R.drawable.icon_arrow_right);
         }
 
     }

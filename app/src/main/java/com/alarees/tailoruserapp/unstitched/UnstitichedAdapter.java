@@ -33,6 +33,7 @@ class UnstitichedAdapter extends RecyclerView.Adapter<UnstitichedAdapter.ViewHol
     static UnstitchedModel model;
     Dialog dialog;
     SharedPreferences mypref;
+
     public UnstitichedAdapter(FragmentManager manager, Context context, ArrayList<UnstitchedModel> models) {
         this.manager = manager;
         this.context = context;
@@ -58,7 +59,7 @@ class UnstitichedAdapter extends RecyclerView.Adapter<UnstitichedAdapter.ViewHol
         holder.itemimg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialog(context,models.get(position).getImgUrl());
+                dialog(context, models.get(position).getImgUrl());
             }
         });
         try {
@@ -82,7 +83,7 @@ class UnstitichedAdapter extends RecyclerView.Adapter<UnstitichedAdapter.ViewHol
                 bundle.putString("itemid", models.get(position).getItemid());
                 bundle.putString("qty", models.get(position).getQuantity());
                 FragmentTransaction ft = manager.beginTransaction();
-                CollarFragment pf=new CollarFragment();
+                CollarFragment pf = new CollarFragment();
                 pf.setArguments(bundle);
                 ft.replace(R.id.nav_host_fragment, pf);
                 ft.addToBackStack("UnstitichedItemsFragment");
@@ -94,9 +95,11 @@ class UnstitichedAdapter extends RecyclerView.Adapter<UnstitichedAdapter.ViewHol
             holder.arrowrtl.setImageResource(R.drawable.icon_arrow_right);
         } else if (mypref.getInt("ar", 0) == 1 && mypref.getInt("en", 0) == 0) {
             holder.arrowrtl.setImageResource(R.drawable.icon_arrow_left);
-
+        } else {
+            holder.arrowrtl.setImageResource(R.drawable.icon_arrow_right);
         }
     }
+
     @Override
     public int getItemCount() {
         return models.size();
@@ -116,13 +119,13 @@ class UnstitichedAdapter extends RecyclerView.Adapter<UnstitichedAdapter.ViewHol
             nameofitem = itemView.findViewById(R.id.uns_name_of_item);
             itemprice = itemView.findViewById(R.id.uns_price_of_item);
             totalqty = itemView.findViewById(R.id.uns_total_qty);
-            arrowrtl=itemView.findViewById(R.id.unstitche_arrow);
+            arrowrtl = itemView.findViewById(R.id.unstitche_arrow);
             //productview = itemView.findViewById(R.id.product_view);
         }
 
     }
 
-    public void dialog(Context context,String uri) {
+    public void dialog(Context context, String uri) {
 
         dialog = new Dialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);

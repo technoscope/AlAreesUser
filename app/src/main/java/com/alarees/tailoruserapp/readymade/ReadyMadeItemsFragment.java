@@ -121,50 +121,6 @@ public class ReadyMadeItemsFragment extends Fragment implements TitledFragment {
         ntbSample.setOnTabBarSelectedIndexListener(new NavigationTabBar.OnTabBarSelectedIndexListener() {
             @Override
             public void onStartTabSelected(NavigationTabBar.Model model, int index) {
-//                if (index == 1) {
-//                    models = new ArrayList<>();
-//                    mRef = FirebaseDatabase.getInstance().getReference("AdminDatabase");
-//                    mRef.child("ReadymadeItems").addValueEventListener(new ValueEventListener() {
-//                        @Override
-//                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                            for (DataSnapshot data : snapshot.getChildren()) {
-//                                ReadymadeModel model = data.getValue(ReadymadeModel.class);
-//                                if (model.getCategory().equals("Winter")) {
-//                                    models.add();
-//                                }
-//                            }
-//                            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-//                            adapter = new ReadyMadeAdapter(manager, getContext(), models);
-//                            recyclerView.setAdapter(adapter);
-//                        }
-//
-//                        @Override
-//                        public void onCancelled(@NonNull DatabaseError error) {
-//                        }
-//                    });
-//                } else if (index == 0) {
-//                    models = new ArrayList<>();
-//                    mRef = FirebaseDatabase.getInstance().getReference("AdminDatabase");
-//                    mRef.child("ReadymadeItems").addValueEventListener(new ValueEventListener() {
-//                        @Override
-//                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                            for (DataSnapshot data : snapshot.getChildren()) {
-//                                ReadymadeModel model = data.getValue(ReadymadeModel.class);
-//                                if (model.getCategory().equals("Summer")) {
-//                                    models.add(model);
-//                                }
-//                            }
-//                            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-//                            adapter = new ReadyMadeAdapter(manager, getContext(), models);
-//                            recyclerView.setAdapter(adapter);
-//                        }
-
-//                        @Override
-//                        public void onCancelled(@NonNull DatabaseError error) {
-//                        }
-//                    });
-//
-//                }
             }
             @Override
             public void onEndTabSelected(NavigationTabBar.Model model, int index) {
